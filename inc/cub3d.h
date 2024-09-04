@@ -5,7 +5,7 @@
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
-//# include "../libft/libft.h"
+# include "../libft/libft_gnl//libft/libft.h"
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -140,7 +140,7 @@ typedef struct l_map
 	int		f;
 	int		c;
 	t_dlist	*spawn;
-//	t_list	*item;
+	t_list	*item;
 
 	char	dirspawn;
 
