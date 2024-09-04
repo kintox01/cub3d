@@ -1,9 +1,0 @@
-mets ta lib ici et pose ton gnl dedans avc un makefile le frere
-
-j'ai tej les headers parce que le cub qui a start y'a un mois alors que j'suis lvl 2 ptdr (comme ça tu mets les tiens aussi)
-
-les bonus on peut les faire dans un src_bonus carrement 
-
-j'peux rajouter la souris facilement et apres faut faire minimap animations ect, si tu veux qu'on y bosse ensemle tu me dis
-
-(notmalement le code est lisible btw)
