@@ -6,7 +6,7 @@
 #    By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 13:00:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/09/04 16:39:00 by hulefevr         ###   ########.fr        #
+#    Updated: 2024/09/04 17:54:01 by hulefevr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,17 +74,17 @@ all:		${LIB}
 
 %.o:		%.c
 		@${CC} ${CFLAGS} -c $? -o $@
-		@echo "${COLOR}$?		✓${DEF_COLOR}"
+		# @echo "${COLOR}$?		✓${DEF_COLOR}"
 
 ${LIB}:	${OBJS}
 		@ar rcs $@ $?
-		@echo "${COLOR}╔═══════════════════════╗${DEF_COLOR}"
+		@echo "${COLOR}╔═══════════════════════╗       ${DEF_COLOR}"
 		@echo "${COLOR}║    Libft compiled!    ║${DEF_COLOR}"
 		@echo "${COLOR}╚═══════════════════════╝${DEF_COLOR}"
 
 bonus:	${OBJS_ALL}
 		@ar rcs ${LIB} $?
-		@echo "${COLOR}╔═══════════════════════╗${DEF_COLOR}"
+		@echo "${COLOR}╔═══════════════════════╗      ${DEF_COLOR}"
 		@echo "${COLOR}║    Bonus compiled!    ║${DEF_COLOR}"
 		@echo "${COLOR}╚═══════════════════════╝${DEF_COLOR}"
 
