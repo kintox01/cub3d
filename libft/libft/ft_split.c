@@ -6,11 +6,11 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:12:32 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/06/06 17:29:37 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:39:09 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 int	cntwrd(char const *s, char c)
 {

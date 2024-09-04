@@ -5,7 +5,8 @@
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
-# include "../libft/libft_gnl//libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/libft/libft.h"
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>

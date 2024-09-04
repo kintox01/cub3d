@@ -6,11 +6,11 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:03:42 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/06/12 11:11:26 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:39:15 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strjoin_with_space(char *s1, char *s2)
 {
