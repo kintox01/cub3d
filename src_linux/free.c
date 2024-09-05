@@ -14,6 +14,7 @@ void	free_init_data(t_data *data)
 	while (++i <= 16)
 		free(data->img[i]);
 	free(data->img);
+	free(data->hud);
 	free(data);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/04 18:25:41 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:43:53 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,23 @@ void	map_init(t_map *map, t_data *data)
 	data->n_taken = 0;
 }
 
+void	init_hud(t_data *data)
+{
+	int		width;
+	int		height;
+	void	*hud_ptr;
+
+	hud_ptr = mlx_xpm_file_to_image(data->mlx, HUD, &width, &height);
+	data->hud = hud_ptr;
+	return ;
+}
+
 int	launch_game(t_data *data)
 {
 	update_param(data, data->pl->rot);
 	raycaster(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->hud, 140, 604);
 	return (0);
 }
 

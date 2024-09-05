@@ -18,6 +18,8 @@
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
 
+# define HUD "./res/hud/finalhud.xpm"
+
 typedef struct s_dlist
 {
 	void			*content;
@@ -147,6 +149,13 @@ typedef struct l_map
 
 }	t_map;
 
+// typedef struct s_hud
+// {
+// 	void	*hud_ptr;
+// 	void	*weapon_ptr;
+// 	void	*minimap_ptr;
+// }	t_hud;
+
 typedef struct l_data
 {
 	void		*p_img;
@@ -158,6 +167,7 @@ typedef struct l_data
 	void		*mlx_win;
 	int			n_taken;
 	int			n_sprites;
+	void		*hud;
 	t_sprite	*sp;
 	t_time		*t;
 	t_img		**img;
@@ -224,5 +234,8 @@ int		map_elem(t_file *file, char **tab);
 int		take_map(t_file *file, t_map *map, char **tab);
 int		check_map(t_map *map);
 int		conv_color(int *color, char *str);
+
+void	display_hud(t_data *data);
+void	init_hud(t_data *data);
 
 #endif // !CUB3D_H
