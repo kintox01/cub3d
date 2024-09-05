@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/05 18:14:51 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/05 18:14:51 by hulefevr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../inc/cub3d.h"
 
@@ -13,11 +25,23 @@ void	map_init(t_map *map, t_data *data)
 	data->n_taken = 0;
 }
 
+void	init_hud(t_data *data)
+{
+	int		width;
+	int		height;
+	void	*hud_ptr;
+
+	hud_ptr = mlx_xpm_file_to_image(data->mlx, HUD, &width, &height);
+	data->hud = hud_ptr;
+	return ;
+}
+
 int	launch_game(t_data *data)
 {
 	update_param(data, data->pl->rot);
 	raycaster(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->hud, 140, 604);
 	return (0);
 }
 
@@ -37,14 +61,14 @@ int	main(int ac, char **av)
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		free_exit(data);
-	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	// mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);
-	mlx_mouse_hide();
+	// mlx_mouse_hide();
 	mlx_do_key_autorepeaton(data->mlx);
-	mlx_hook(data->mlx_win, 2, 0, key_handler, data);
-	mlx_hook(data->mlx_win, 3, 0, key_exit, data);
+	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
+	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
 	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/05 18:14:34 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/05 18:14:35 by hulefevr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../inc/cub3d.h"
 
@@ -14,9 +26,9 @@ void	free_init_data(t_data *data)
 	while (++i <= 16)
 		free(data->img[i]);
 	free(data->img);
+	free(data->hud);
 	free(data);
 }
-
 int	free_exit(t_data *data)
 {
 	int		i;
