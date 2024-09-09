@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:01:16 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/04 17:09:17 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/09/04 17:01:22 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/09 12:02:14 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../inc/cub3d.h"
 #include "key.h"
@@ -96,7 +97,6 @@ void	spawn_changer(int key, t_data *data)
 
 int	key_handler(int key, t_data *data)
 {
-	printf("key: %d\n", key);
 	if (key == KEY_ESC)
 		free_exit(data);
 	if (key == 14)

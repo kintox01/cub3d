@@ -18,6 +18,8 @@
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
+# define MINIMAP_SIZE 200
+# define MAP_SCALE 10
 
 # define HUD "./res/hud/finalhud.xpm"
 # define WEAPON0 "./res/animation/gun0.xpm"
@@ -169,6 +171,24 @@ typedef struct s_animation
 	int			i;
 }	t_animation;
 
+
+typedef struct l_minimap
+{
+	int		x;
+	int		y;
+	int		visible_tiles_x;
+	int		visible_tiles_y;
+	double		offset_x;
+	double		offset_y;
+	int		map_x;
+	int		map_y;
+	char	**map;
+	int		player_x;
+	int		player_y;
+	int		map_height;
+	int		map_width;
+}	t_minimap;
+
 typedef struct l_data
 {
 	void		*p_img;
@@ -189,6 +209,7 @@ typedef struct l_data
 	t_player	*pl;
 	t_dda		*dda;
 	t_animation	*anim;
+	t_minimap	*minimap;
 }	t_data;
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -252,5 +273,8 @@ int		conv_color(int *color, char *str);
 
 void	*display_hud(void *dat);
 void	init_hud(t_data *data);
+void	draw_minimap(t_data *data);
+void	init_minimap(t_data *data);
+void	clear_screen(t_data *data);
 
 #endif // !CUB3D_H

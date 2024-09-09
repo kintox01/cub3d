@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 17:28:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/09/06 16:24:33 by hulefevr         ###   ########.fr        #
+#    Updated: 2024/09/09 13:16:28 by hugolefevre      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3D
 
 CC = gcc
 
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -g -fsanitize=address
 
 RM = rm -rf
 
@@ -62,7 +62,9 @@ SRCS_MACOS = 	src_macos/dlst.c\
 		src_macos/parsing/parsing.c\
 		src_macos/parsing/parsing_utils.c\
 		src_macos/parsing/parsing_utils2.c\
-		src_macos/parsing/read_file.c
+		src_macos/parsing/read_file.c \
+		src_macos/hud.c \
+		src_macos/minimap.c \
 
 SRCS_BONUS = 	src_bonus/dlst.c\
 		src_bonus/draw.c\
@@ -298,7 +300,7 @@ clean :
 
 re : fclean all
 
-
+.PHONY : all clean fclean re
 #	COLOR SETTING	#############################################################
 black 				=	"[1;30m"
 red 				=	"[1;31m"

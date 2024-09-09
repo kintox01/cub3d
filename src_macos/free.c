@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 18:14:34 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/05 18:14:35 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/06 17:18:21 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,18 @@ void	free_init_data(t_data *data)
 	free(data->sp);
 	while (++i <= 16)
 		free(data->img[i]);
+	i = -1;
+	while (++i < 5)
+	{
+		mlx_destroy_image(data->mlx, data->weapon[i]->p_img);
+		free(data->weapon[i]);
+	}
 	free(data->img);
 	free(data->hud);
 	free(data);
 }
+
+
 int	free_exit(t_data *data)
 {
 	int		i;

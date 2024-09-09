@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 18:14:09 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/05 18:14:16 by hulefevr         ###   ########.fr       */
+/*   Created: 2024/09/05 18:13:47 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/09 13:53:26 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../inc/cub3d.h"
 
@@ -88,6 +89,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 15, "./res/door/CustomDoor.xpm");
 	init_texture(data, 16, "./res/door/CustomDoor.xpm");
 	init_hud(data);
+	init_minimap(data);
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		exit (write_error("Error\nColor error\n"));
 	ft_free(file->c, file->f, file, 0);
