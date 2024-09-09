@@ -14,11 +14,17 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <pthread.h>
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
 
 # define HUD "./res/hud/finalhud.xpm"
+# define WEAPON0 "./res/animation/gun0.xpm"
+# define WEAPON1 "./res/animation/gun1.xpm"
+# define WEAPON2 "./res/animation/gun2.xpm"
+# define WEAPON3 "./res/animation/gun3.xpm"
+# define WEAPON4 "./res/animation/gun4.xpm"
 
 typedef struct s_dlist
 {
@@ -149,12 +155,19 @@ typedef struct l_map
 
 }	t_map;
 
-// typedef struct s_hud
-// {
-// 	void	*hud_ptr;
-// 	void	*weapon_ptr;
-// 	void	*minimap_ptr;
-// }	t_hud;
+typedef struct l_weapon
+{
+	void	*p_img;
+	int		width;
+	int		height;
+}	t_weapon;
+
+typedef struct s_animation
+{
+	pthread_t	thread;
+	pthread_mutex_t	lock;
+	int			i;
+}	t_animation;
 
 typedef struct l_data
 {
@@ -171,9 +184,11 @@ typedef struct l_data
 	t_sprite	*sp;
 	t_time		*t;
 	t_img		**img;
+	t_weapon	**weapon;
 	t_map		*map;
 	t_player	*pl;
 	t_dda		*dda;
+	t_animation	*anim;
 }	t_data;
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -235,7 +250,7 @@ int		take_map(t_file *file, t_map *map, char **tab);
 int		check_map(t_map *map);
 int		conv_color(int *color, char *str);
 
-void	display_hud(t_data *data);
+void	*display_hud(void *dat);
 void	init_hud(t_data *data);
 
 #endif // !CUB3D_H

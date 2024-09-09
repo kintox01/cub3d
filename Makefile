@@ -6,7 +6,7 @@
 #    By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 17:28:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/09/04 18:29:52 by hulefevr         ###   ########.fr        #
+#    Updated: 2024/09/06 16:24:33 by hulefevr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRCS_LINUX = 	src_linux/dlst.c\
 		src_linux/parsing/parsing.c\
 		src_linux/parsing/parsing_utils.c\
 		src_linux/parsing/parsing_utils2.c\
-		src_linux/parsing/read_file.c
+		src_linux/parsing/read_file.c \
+		src_linux/hud.c \
 
 SRCS_MACOS = 	src_macos/dlst.c\
 		src_macos/draw.c\
@@ -63,6 +64,29 @@ SRCS_MACOS = 	src_macos/dlst.c\
 		src_macos/parsing/parsing_utils2.c\
 		src_macos/parsing/read_file.c
 
+SRCS_BONUS = 	src_bonus/dlst.c\
+		src_bonus/draw.c\
+		src_bonus/free.c\
+		src_bonus/init.c\
+		src_bonus/keys.c\
+		src_bonus/main.c\
+	    src_bonus/raycaster.c\
+		src_bonus/raycaster2.c\
+		src_bonus/split1.c\
+		src_bonus/up_param.c\
+		src_bonus/utils.c\
+		src_bonus/utils2.c\
+		src_bonus/utils3.c\
+		src_bonus/parsing/check_map.c\
+		src_bonus/parsing/colors.c\
+		src_bonus/parsing/cp_map.c\
+		src_bonus/parsing/map_elem.c\
+		src_bonus/parsing/parsing.c\
+		src_bonus/parsing/parsing_utils.c\
+		src_bonus/parsing/parsing_utils2.c\
+		src_bonus/parsing/read_file.c \
+		src_bonus/hud.c \
+
 UNAME_S := $(shell uname -s)
 
 MAKE_EXT_THREAD		= @make -j -s --no-print-directory
@@ -79,7 +103,7 @@ ifeq ($(UNAME_S),Darwin)
 	SRCS 			= $(SRCS_MACOS:.c=.o)
 endif
 
-
+OBJ_BONUS = $(SRCS_BONUS:.c=.o)
 
 .c.o: $(SRCS)
 	@printf $(green)"\r\033[KCompiling objects... "$(yellow)"<$<> ⏳ "$(reset)
@@ -118,26 +142,41 @@ $(NAME) : ${SRCS}
 	@printf $(reset)
 
 
-$(NAME_BONUS) : ${SRCS_BONUS}
+$(NAME_BONUS) : ${OBJ_BONUS}
 
 	@printf $(magenta)
 	@printf "\nStart build ⏳\n"
-	@printf "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
 	@printf $(reset)
-	$(MAKE_EXT_THREAD) all -C $(MLX)
-	$(MAKE_EXT_THREAD) bonus -C libft/libft/
-	@printf "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+	@printf '\r █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ - 0%%\r'
+	@$(MAKE_EXT_THREAD) all -C $(MLX)
+	@printf '\r ███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ - 10%%\r'
+	@$(MAKE_EXT_THREAD) bonus -C libft/libft/
+	@printf '\r ███████▒▒▒▒▒▒▒▒▒▒▒▒▒▒ - 30%%\r'
+	@sleep .5
 	@printf $(magenta)
-	@printf "Compiling cub3D🔨\n"
-	@printf "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+	@printf "Compiling cub3D with bonuses 🔨        \n"
 	@printf $(reset)
-	$(CC) $(CFLAGS) $(SRCS_BONUS) libft/libft/libft.a $(LIBS) -o $(NAME)
+	@printf '\r ████████████▒▒▒▒▒▒▒▒▒ - 55%%\r'
+	@$(CC) $(CFLAGS) $(OBJ) libft/libft/libft.a $(LIBS) -o $(NAME)
+	@printf '\r ███████████████▒▒▒▒▒▒ - 70%%\r'
+	@sleep .1
+	@printf '\r █████████████████▒▒▒▒ - 80%%\r'
+	@sleep .1
+	@printf '\r ██████████████████▒▒▒ - 85%%\r'
+	@sleep .1
+	@printf '\r ███████████████████▒▒ - 90%%\r'
+	@sleep .1
+	@printf '\r ████████████████████▒ - 95%%\r'
+	@sleep .1
+	@printf '\r █████████████████████ - 99%%\r'
+	@sleep 0.8
 	@printf $(magenta)
-	@printf "Your cub3D is ready ✅\n"
-	@printf "➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n"
+	@printf "Your cub3D is ready ✅           \n"
 	@printf $(reset)
 
 all : $(NAME) pepechad
+
+bonus : $(NAME_BONUS)
 
 pepe :
 	@echo "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⠽⠭⣥⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
@@ -255,7 +294,7 @@ clean :
 	make clean -C libft/libft
 
 
-bonus : $(NAME_BONUS)
+
 
 re : fclean all
 
