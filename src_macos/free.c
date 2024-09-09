@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/06 17:18:21 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:13:42 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ void	free_init_data(t_data *data)
 		mlx_destroy_image(data->mlx, data->weapon[i]->p_img);
 		free(data->weapon[i]);
 	}
+	i = -1;
+	while(++i < data->minimap->map_height)
+		free(data->minimap->map[i]);
+	free(data->minimap->map);
+	mlx_destroy_image(data->mlx, data->minimap->img);
+	mlx_destroy_image(data->mlx, data->p_img);
 	free(data->img);
 	free(data->hud);
 	free(data);

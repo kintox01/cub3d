@@ -187,6 +187,10 @@ typedef struct l_minimap
 	int		player_y;
 	int		map_height;
 	int		map_width;
+	void	*img;
+	int		bpp;
+	int		size_line;
+	int		endian;
 }	t_minimap;
 
 typedef struct l_data
@@ -275,6 +279,6 @@ void	*display_hud(void *dat);
 void	init_hud(t_data *data);
 void	draw_minimap(t_data *data);
 void	init_minimap(t_data *data);
-void	clear_screen(t_data *data);
+void	clear_minimap(t_data *data);
 
 #endif // !CUB3D_H
