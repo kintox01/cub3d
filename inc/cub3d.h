@@ -174,23 +174,24 @@ typedef struct s_animation
 
 typedef struct l_minimap
 {
-	int		x;
-	int		y;
-	int		visible_tiles_x;
-	int		visible_tiles_y;
+	int			x;
+	int			y;
+	int			visible_tiles_x;
+	int			visible_tiles_y;
 	double		offset_x;
 	double		offset_y;
-	int		map_x;
-	int		map_y;
-	char	**map;
-	int		player_x;
-	int		player_y;
-	int		map_height;
-	int		map_width;
-	void	*img;
-	int		bpp;
-	int		size_line;
-	int		endian;
+	int			map_x;
+	int			map_y;
+	char		**map;
+	int			map_height;
+	int			map_width;
+	void		*img;
+	int			bpp;
+	int			size_line;
+	int			endian;
+	char		*img_data;
+	int			mini_x;
+	int			mini_y;
 }	t_minimap;
 
 typedef struct l_data
@@ -280,5 +281,8 @@ void	init_hud(t_data *data);
 void	draw_minimap(t_data *data);
 void	init_minimap(t_data *data);
 void	clear_minimap(t_data *data);
+void    display_player(t_data *data);
+void	draw_pixel_img(int x, int y, int color, int img_width, char *data);
+void	draw_dat_map(t_data *data);
 
 #endif // !CUB3D_H

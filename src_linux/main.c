@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/06 17:09:51 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:08:43 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	map_init(t_map *map, t_data *data)
 	data->t->tmp = 1;
 	data->pl->totalrots = 0;
 	data->n_taken = 0;
+	data->minimap = malloc(sizeof(t_minimap));
 }
 
 int	launch_game(t_data *data)
 {
-
 	update_param(data, data->pl->rot);
 	raycaster(data);
 	pthread_mutex_lock(&data->anim->lock);
@@ -36,6 +36,8 @@ int	launch_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->weapon[data->anim->i]->p_img, 323, 498);
 	pthread_mutex_unlock(&data->anim->lock);
+	clear_minimap(data);
+	draw_minimap(data);
 	mlx_do_sync(data->mlx);
 	return (0);
 }
