@@ -23,6 +23,8 @@
 # define OFFSET_X 20
 # define OFFSET_Y 20
 # define MAP_SCALE 10
+# define BUTTON_WIDTH 200
+# define BUTTON_HEIGHT 50
 
 # define HUD "./res/hud/finalhud.xpm"
 # define WEAPON0 "./res/animation/gun0.xpm"
@@ -204,6 +206,10 @@ typedef struct l_data
 	int			n_taken;
 	int			n_sprites;
 	void		*hud;
+	int			menu_active;
+	int			game_started;
+	void		*img_bg;
+	// void		*img_start;
 	t_sprite	*sp;
 	t_time		*t;
 	t_img		**img;
@@ -280,5 +286,7 @@ void	draw_minimap(t_data *data);
 void	init_minimap(t_data *data);
 void	draw_rect(t_data *data, int x, int y, int color);
 void	draw_minimap_2(t_data *data);
+void	cub(t_data *data);
+void	draw_menu(t_data *data);
 
 #endif // !CUB3D_H

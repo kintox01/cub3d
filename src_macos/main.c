@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 12:30:22 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/10 14:30:02 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,23 @@ int	launch_game(t_data *data)
 	return (0);
 }
 
+void	cub(t_data *data)
+{
+	mlx_clear_window(data->mlx, data->mlx_win);
+    mlx_string_put(data->mlx, data->mlx_win, WIN_WIDTH / 2 - 50, WIN_HEIGHT / 2, 0xFFFFFF, "Le jeu est en cours...");
+	pthread_mutex_init(&data->anim->lock, NULL);
+	pthread_create(&data->anim->thread, NULL, display_hud, data);
+	// mlx_mouse_hide();
+	mlx_do_key_autorepeaton(data->mlx);
+	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
+	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
+	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
+	mlx_loop_hook(data->mlx, launch_game, data);
+	mlx_loop(data->mlx);
+	pthread_join(data->anim->thread, NULL);
+	pthread_mutex_destroy(&data->anim->lock);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -60,17 +77,14 @@ int	main(int ac, char **av)
 	// mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
-	pthread_mutex_init(&data->anim->lock, NULL);
-	pthread_create(&data->anim->thread, NULL, display_hud, data);
 	set_plane(data, data->map->dirspawn);
-	// mlx_mouse_hide();
-	mlx_do_key_autorepeaton(data->mlx);
+	data->menu_active = 1;
+	data->game_started = 0;
+	// cub(data);
+	draw_menu(data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
-	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);
-	pthread_join(data->anim->thread, NULL);
-	pthread_mutex_destroy(&data->anim->lock);
 	return (0);
 }

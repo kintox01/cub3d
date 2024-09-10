@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:54:21 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/04 16:57:04 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:25:33 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 # define KEY_UP 126
 # define KEY_DOWN 125
 # define KEY_SHIFT 257
+# define ENTER 36
 
 #endif

@@ -6,7 +6,7 @@
 #    By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 17:28:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/09/10 12:25:00 by hugolefevre      ###   ########.fr        #
+#    Updated: 2024/09/10 13:55:37 by hugolefevre      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCS_MACOS = 	src_macos/dlst.c\
 		src_macos/parsing/read_file.c \
 		src_macos/hud.c \
 		src_macos/minimap.c \
+		src_macos/menu.c \
 
 UNAME_S := $(shell uname -s)
 

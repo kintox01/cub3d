@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:43:29 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/06 17:11:06 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:32:05 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*display_hud(void *dat)
 		pthread_mutex_lock(&data->anim->lock);
 		data->anim->i = (data->anim->i + 1) % 5;
 		pthread_mutex_unlock(&data->anim->lock);
-		usleep(150000);
+		usleep(170000);
 	}
 	return (NULL);
 }
