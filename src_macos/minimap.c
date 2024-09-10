@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:19:59 by hugolefevre       #+#    #+#             */
-/*   Updated: 2024/09/10 12:36:27 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/10 15:28:10 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void draw_minimap(t_data *data)
 	data->minimap->end_x = data->minimap->start_x + MINIMAP_SIZE / TILE_SIZE;
 	data->minimap->end_y = data->minimap->start_y + MINIMAP_SIZE / TILE_SIZE;
 	data->minimap->y = data->minimap->start_y;
-	while (data->minimap->y < data->minimap->end_y) {
+	while (data->minimap->y < data->minimap->end_y)
+	{
 		data->minimap->x = data->minimap->start_x;
 		while (data->minimap->x < data->minimap->end_x)
 		{

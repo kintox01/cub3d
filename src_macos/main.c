@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 14:30:02 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/10 16:28:49 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	launch_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->weapon[data->anim->i]->p_img, 323, 498);
 	pthread_mutex_unlock(&data->anim->lock);
-	draw_minimap(data);
+	// draw_minimap(data);
 	mlx_do_sync(data->mlx);
 	return (0);
 }
@@ -56,6 +56,25 @@ void	cub(t_data *data)
 	mlx_loop(data->mlx);
 	pthread_join(data->anim->thread, NULL);
 	pthread_mutex_destroy(&data->anim->lock);
+}
+
+int	mouse_hook(int button, int x, int y, t_data *data)
+{
+	// printf("x = %d, y = %d\n", x, y);
+	if (button == 1)
+	{
+		if (x >= 350 && x <= 550 && y >= 375 && y <= 415)
+		{
+			data->menu_active = 0;
+			data->game_started = 1;
+			cub(data);
+		}
+		if (x >= 200 && x <= 250 && y >= 450 && y <= 490)
+			system("mpg123 ./res/prout.mp3 &");
+		if (x >= 620 && x <= 665 && y >= 450 && y <= 490)
+			system("mpg123 ./res/pete.mp3 &");
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -85,6 +104,7 @@ int	main(int ac, char **av)
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
+	mlx_mouse_hook(data->mlx_win, mouse_hook, data);
 	mlx_loop(data->mlx);
 	return (0);
 }
