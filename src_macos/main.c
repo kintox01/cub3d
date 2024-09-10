@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/09 15:08:43 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/10 12:30:22 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	launch_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->weapon[data->anim->i]->p_img, 323, 498);
 	pthread_mutex_unlock(&data->anim->lock);
-	clear_minimap(data);
 	draw_minimap(data);
 	mlx_do_sync(data->mlx);
 	return (0);

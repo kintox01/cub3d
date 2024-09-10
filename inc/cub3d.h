@@ -19,6 +19,9 @@
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
 # define MINIMAP_SIZE 200
+# define TILE_SIZE 10
+# define OFFSET_X 20
+# define OFFSET_Y 20
 # define MAP_SCALE 10
 
 # define HUD "./res/hud/finalhud.xpm"
@@ -176,22 +179,17 @@ typedef struct l_minimap
 {
 	int			x;
 	int			y;
-	int			visible_tiles_x;
-	int			visible_tiles_y;
 	double		offset_x;
 	double		offset_y;
-	int			map_x;
-	int			map_y;
+	int			start_x;
+	int			start_y;
+	int			end_x;
+	int			end_y;
 	char		**map;
 	int			map_height;
 	int			map_width;
-	void		*img;
-	int			bpp;
-	int			size_line;
-	int			endian;
-	char		*img_data;
-	int			mini_x;
-	int			mini_y;
+	int			screen_x;
+	int			screen_y;
 }	t_minimap;
 
 typedef struct l_data
@@ -280,9 +278,7 @@ void	*display_hud(void *dat);
 void	init_hud(t_data *data);
 void	draw_minimap(t_data *data);
 void	init_minimap(t_data *data);
-void	clear_minimap(t_data *data);
-void    display_player(t_data *data);
-void	draw_pixel_img(int x, int y, int color, int img_width, char *data);
-void	draw_dat_map(t_data *data);
+void	draw_rect(t_data *data, int x, int y, int color);
+void	draw_minimap_2(t_data *data);
 
 #endif // !CUB3D_H
