@@ -141,6 +141,7 @@ typedef struct l_img
 	int		bt;
 	int		s_line;
 	int		endian;
+	char	*addr;
 }	t_img;
 
 typedef struct l_map
@@ -192,6 +193,7 @@ typedef struct l_minimap
 	int			map_width;
 	int			screen_x;
 	int			screen_y;
+	t_img		*img;
 }	t_minimap;
 
 typedef struct l_data
@@ -288,5 +290,7 @@ void	draw_rect(t_data *data, int x, int y, int color);
 void	draw_minimap_2(t_data *data);
 void	cub(t_data *data);
 void	draw_menu(t_data *data);
+void	draw_minimap_2(t_data *data);
+void	draw_minimap(t_data *data);
 
 #endif // !CUB3D_H

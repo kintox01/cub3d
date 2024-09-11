@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 16:28:49 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/11 13:36:47 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	launch_game(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->weapon[data->anim->i]->p_img, 323, 498);
 	pthread_mutex_unlock(&data->anim->lock);
-	// draw_minimap(data);
+	draw_minimap(data);
 	mlx_do_sync(data->mlx);
 	return (0);
 }
@@ -44,7 +44,8 @@ int	launch_game(t_data *data)
 void	cub(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->mlx_win);
-    mlx_string_put(data->mlx, data->mlx_win, WIN_WIDTH / 2 - 50, WIN_HEIGHT / 2, 0xFFFFFF, "Le jeu est en cours...");
+    mlx_string_put(data->mlx, data->mlx_win, WIN_WIDTH / 2 - 50, WIN_HEIGHT / 2, \
+		0xFFFFFF, "Le jeu est en cours...");
 	pthread_mutex_init(&data->anim->lock, NULL);
 	pthread_create(&data->anim->thread, NULL, display_hud, data);
 	// mlx_mouse_hide();

@@ -6,7 +6,7 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:23:10 by hugolefevre       #+#    #+#             */
-/*   Updated: 2024/09/10 15:02:11 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/10 17:26:18 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*load_image(t_data *data, char *path)
     void *img = mlx_xpm_file_to_image(data->mlx, path, &i, &j);
     if (!img)
 	{
-        fprintf(stderr, "Failed to load image: %s\n", path);
+        printf("Failed to load image: %s\n", path);
         exit(1);
     }
     return (img);
@@ -28,10 +28,5 @@ void	*load_image(t_data *data, char *path)
 void draw_menu(t_data *data)
 {
 	data->img_bg = load_image(data, "./res/menu/but.xpm");
-    // data->img_start = load_image(&data, "path/to/start_button.xpm", NULL, NULL);
-    // Dessiner l'image de fond du menu
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->img_bg, 0, 0);
-
-    // Dessiner les boutons
-    // mlx_put_image_to_window(data->mlx, data->mlx_win, data->img_start, 100, 200);
 }

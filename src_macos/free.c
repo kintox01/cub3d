@@ -6,13 +6,27 @@
 /*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 12:29:44 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/11 14:11:10 by hugolefevre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../inc/cub3d.h"
 
+void free_minimap(t_data *data)
+{
+    int i = 0;
+
+    while (i < data->minimap->map_height)
+    {
+        free(data->minimap->map[i]);
+        i++;
+    }
+
+    if (data->minimap->img->p_img)
+        mlx_destroy_image(data->mlx, data->minimap->img->p_img);
+	free(data->minimap->img);
+}
 
 void	free_my_data(t_data *data)
 {
@@ -26,11 +40,7 @@ void	free_my_data(t_data *data)
 		if (data->weapon[i])
 			free(data->weapon[i]);
 	}
-	i = -1;
-	while(++i < data->minimap->map_height)
-		free(data->minimap->map[i]);
-	free(data->minimap->map);
-	free(data->minimap);
+	free_minimap(data);
 	if (data->p_img)
 		mlx_destroy_image(data->mlx, data->p_img);
 	if (data->hud)
