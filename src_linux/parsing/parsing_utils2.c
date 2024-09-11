@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 17:35:09 by hulefevr          #+#    #+#             */
+/*   Updated: 2024/09/11 17:38:42 by hulefevr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "../../inc/cub3d.h"
 
@@ -5,6 +17,12 @@ int	write_error(char *str)
 {
 	write(2, str, ft_strlen(str));
 	return (1);
+}
+
+int	write_error0(char *str)
+{	
+	printf("%s", str);
+	return (0);
 }
 
 int	are_printable(char *str)

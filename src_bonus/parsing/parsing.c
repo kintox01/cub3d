@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:47 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/09 13:53:26 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/11 19:05:50 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,6 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 4, file->ea);
 	ft_free(file->no, file->so, file->we, file->ea);
 	init_texture(data, 5, "./res/door/door1.xpm");
-	init_texture(data, 6, "./res/key/frame_0.xpm");
-	init_texture(data, 7, "./res/key/frame_1.xpm");
-	init_texture(data, 8, "./res/key/frame_2.xpm");
-	init_texture(data, 9, "./res/key/frame_3.xpm");
-	init_texture(data, 10, "./res/key/frame_4.xpm");
-	init_texture(data, 11, "./res/key/frame_5.xpm");
-	init_texture(data, 12, "./res/key/frame_6.xpm");
-	init_texture(data, 13, "./res/door/CustomDoor.xpm");
-	init_texture(data, 14, "./res/door/CustomDoor.xpm");
-	init_texture(data, 15, "./res/door/CustomDoor.xpm");
-	init_texture(data, 16, "./res/door/CustomDoor.xpm");
 	init_hud(data);
 	init_minimap(data);
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))

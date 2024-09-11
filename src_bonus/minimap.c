@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:19:59 by hugolefevre       #+#    #+#             */
-/*   Updated: 2024/09/11 14:23:42 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/11 19:32:51 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,7 @@ void	init_minimap(t_data *data)
 	}
 	data->minimap->img->addr = mlx_get_data_addr(data->minimap->img->p_img, \
 		&data->minimap->img->bt, &data->minimap->img->s_line, &data->minimap->img->endian);
-
-
 }
-
-
 
 void	draw_minimap_2(t_data *data)
 {

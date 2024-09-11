@@ -211,7 +211,6 @@ typedef struct l_data
 	int			menu_active;
 	int			game_started;
 	void		*img_bg;
-	// void		*img_start;
 	t_sprite	*sp;
 	t_time		*t;
 	t_img		**img;
@@ -292,5 +291,6 @@ void	cub(t_data *data);
 void	draw_menu(t_data *data);
 void	draw_minimap_2(t_data *data);
 void	draw_minimap(t_data *data);
+int		write_error0(char *str);
 
 #endif // !CUB3D_H
