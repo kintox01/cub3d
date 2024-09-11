@@ -6,41 +6,12 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/09 17:35:37 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:08:22 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../inc/cub3d.h"
-
-
-void	free_my_data(t_data *data)
-{
-	int i;
-	
-	i = -1;
-	while (++i < 5)
-	{
-		if (data->weapon[i]->p_img)
-			mlx_destroy_image(data->mlx, data->weapon[i]->p_img);
-		if (data->weapon[i])
-			free(data->weapon[i]);
-	}
-	i = -1;
-	while(++i < data->minimap->map_height)
-		free(data->minimap->map[i]);
-	free(data->minimap->map);
-	if (data->minimap->img)
-		mlx_destroy_image(data->mlx, data->minimap->img);
-	free(data->minimap);
-	if (data->p_img)
-		mlx_destroy_image(data->mlx, data->p_img);
-	if (data->hud)
-		mlx_destroy_image(data->mlx, data->hud);
-	free(data->anim);
-	return ;
-	
-}
 
 void	free_init_data(t_data *data)
 {
@@ -60,7 +31,6 @@ void	free_init_data(t_data *data)
 			free(data->img[i]);
 	}
 	free(data->img);
-	free_my_data(data);
 	free(data->mlx);
 	free(data);
 	return ;
