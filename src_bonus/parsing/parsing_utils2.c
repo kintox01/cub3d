@@ -7,6 +7,12 @@ int	write_error(char *str)
 	return (1);
 }
 
+int	write_error0(char *str)
+{	
+	printf("%s", str);
+	return (0);
+}
+
 int	are_printable(char *str)
 {
 	size_t	i;

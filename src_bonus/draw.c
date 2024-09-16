@@ -7,7 +7,7 @@ int	get_pixel(t_img *img, int x, int y)
 	int	*dst;
 	int	color;
 
-	dst = (void *)img->p_img + (y * img->s_line + x * \
+	dst = (void *)img->addr + (y * img->s_line + x * \
 		(img->bt / 8));
 	color = *(int *)dst;
 	return (color);

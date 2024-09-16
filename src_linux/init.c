@@ -31,7 +31,7 @@ void	init_texture(t_data *ptr, int flag, char *path)
 		path, &ptr->img[flag]->width, &ptr->img[flag]->height);
 	if (!(ptr->img[flag]->p_img))
 		exit(write_error("Error\nMap load\n"));
-	ptr->img[flag]->p_img = mlx_get_data_addr(ptr->img[flag]->p_img, \
+	ptr->img[flag]->addr = mlx_get_data_addr(ptr->img[flag]->p_img, \
 		&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
 }
 
@@ -46,15 +46,16 @@ int	init_data(t_data *data)
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->t = malloc(sizeof(t_time));
-	data->img = malloc(sizeof(t_img *) * 17);
+	data->img = malloc(sizeof(t_img *) * 6);
 	if (!data->mlx || !data->mlx_win || !data->pl
 		|| !data->dda || !data->t || !data->img)
 		return (1);
-	while (i <= 16)
+	while (i <= 5)
 	{
 		data->img[i] = malloc(sizeof(t_img));
 		if (!data->img[i])
-			return (1);
+			return (write_error("Error\nMap load\n"));
+		data->img[i]->p_img = NULL;
 		i++;
 	}
 	data->sp = malloc(sizeof(t_sprite));

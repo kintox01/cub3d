@@ -39,7 +39,7 @@ int	check(t_map *map, size_t *map_len)
 				&& map->map[y + 1] && map_len[y + 1] >= x
 				&& ismap(map->map[y + 1][x - 1])
 				&& ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))
-				return (write_error("Error\nMap isnt close\n"));
+				exit(write_error0("Error\nMap isnt close\n"));
 			if (isspawn(map->map[y][x]))
 				if (add_item(map, x, y))
 					return (1);

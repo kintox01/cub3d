@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:43:29 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 14:32:05 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/16 12:48:41 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	create_weapon(t_data *data)
 	init_weapon(data, WEAPON2, 2);
 	init_weapon(data, WEAPON3, 3);
 	init_weapon(data, WEAPON4, 4);
+	data->anim->status = 1;
 	return ;
 }
 
@@ -73,6 +74,10 @@ void	*display_hud(void *dat)
 		data->anim->i = (data->anim->i + 1) % 5;
 		pthread_mutex_unlock(&data->anim->lock);
 		usleep(170000);
+		if (data->anim->status == 0)
+		{
+			pthread_exit(NULL);
+		}
 	}
 	return (NULL);
 }

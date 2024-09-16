@@ -32,6 +32,7 @@
 # define WEAPON2 "./res/animation/gun2.xpm"
 # define WEAPON3 "./res/animation/gun3.xpm"
 # define WEAPON4 "./res/animation/gun4.xpm"
+# define NB_TEXTURE 5
 
 typedef struct s_dlist
 {
@@ -172,9 +173,10 @@ typedef struct l_weapon
 
 typedef struct s_animation
 {
-	pthread_t	thread;
+	pthread_t		thread;
 	pthread_mutex_t	lock;
-	int			i;
+	int				i;
+	int				status;
 }	t_animation;
 
 

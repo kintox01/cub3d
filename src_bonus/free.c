@@ -6,7 +6,7 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 19:25:11 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:45:35 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ void free_minimap(t_data *data)
 	{
         mlx_destroy_image(data->mlx, data->minimap->img->p_img);
 	}
-	free(data->minimap->map);
-	free(data->minimap->img);
 	if (data->anim)
 	{
 		pthread_mutex_destroy(&data->anim->lock);
-		pthread_cancel(data->anim->thread);
+		data->anim->status = 0;
+		pthread_join(data->anim->thread, NULL);
+		printf("Thread %ld freed\n", data->anim->thread);
 	}
+	free(data->minimap->map);
+	free(data->minimap->img);
 	free(data->minimap);
 }
 
@@ -50,13 +52,17 @@ void	free_my_data(t_data *data)
 			free(data->weapon[i]);
 	}
 	free(data->weapon);
-	printf("Texture %p freed\n", data->hud);
 	free_minimap(data);
 	if (data->p_img)
 		mlx_destroy_image(data->mlx, data->p_img);
 	if (data->hud)
 		mlx_destroy_image(data->mlx, data->hud);
-	free(data->anim);
+	if (data->img_bg)
+		mlx_destroy_image(data->mlx, data->img_bg);
+	printf("Hud %p freed\n", data->hud);
+	if (data->anim)
+		free(data->anim);
+	
 	return ;
 	
 }
@@ -65,22 +71,26 @@ void	free_init_data(t_data *data)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	free(data->pl);
 	free(data->dda);
 	free(data->t);
 	free(data->sp->buffer);
 	free(data->sp);
-	while (++i <= 5)
+	if (data->img[0])
+		free(data->img[0]);
+	while (++i < 6)
 	{
-		printf("Texture %p freed\n", data->img[i]->p_img);
-		// if (data->img[i]->p_img)
-		// 	mlx_destroy_image(data->mlx, data->img[i]->p_img);
-		// if (data->img[i]->p_img)
-		// 	free(data->img[i]->p_img);
+		if (data->img[i] != NULL && data->img[i]->p_img != NULL)
+		{
+			mlx_destroy_image(data->mlx, data->img[i]->p_img);
+			data->img[i]->p_img = NULL;
+		}
+		printf("Texture %i %p freed\n", i, data->img[i]->p_img);
 		if (data->img[i])
 			free(data->img[i]);
 	}
+	mlx_destroy_window(data->mlx, data->mlx_win);
 	free(data->img);
 	free_my_data(data);
 	free(data->mlx);
@@ -95,7 +105,6 @@ int	free_exit(t_data *data)
 	t_list	*tmp;
 	t_list	*tmp2;
 
-	mlx_destroy_window(data->mlx, data->mlx_win);
 	tmp = data->map->item;
 	while (tmp)
 	{
