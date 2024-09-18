@@ -4,8 +4,6 @@
 
 # include <math.h>
 # include <time.h>
-# include "../minilibx_macos/mlx.h"
-# include "../minilibx-linux/mlx.h"
 # include "../libft/libft/libft.h"
 # include <unistd.h>
 # include <sys/types.h>
@@ -15,6 +13,15 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <pthread.h>
+
+# ifdef __APPLE__
+#  include "../minilibx_macos/mlx.h"
+# elif defined(__linux__)
+#  include "../minilibx-linux/mlx.h"
+# else
+#  error "OS not supported"
+# endif
+
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
@@ -271,7 +278,6 @@ int		isspawn(char c);
 int		inmap(char c);
 int		ismap(char c);
 
-int		write_error(char *str);
 int		are_printable(char *str);
 int		are_space(char *str);
 int		ft_free(void *a1, void *a2, void *a3, void *a4);
@@ -294,5 +300,6 @@ void	draw_menu(t_data *data);
 void	draw_minimap_2(t_data *data);
 void	draw_minimap(t_data *data);
 int		write_error0(char *str);
+int		mousing(t_data *data);
 
 #endif // !CUB3D_H

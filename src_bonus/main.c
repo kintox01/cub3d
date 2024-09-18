@@ -6,7 +6,7 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 17:03:13 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:21:53 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void	cub(t_data *data)
 		0xFFFFFF, "Le jeu est en cours...");
 	pthread_mutex_init(&data->anim->lock, NULL);
 	pthread_create(&data->anim->thread, NULL, display_hud, data);
-	// mlx_mouse_hide();
 	mlx_do_key_autorepeaton(data->mlx);
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
+	// mlx_hook(data->mlx_win, 6, 1L << 6, mousing, data);
 	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);
 	pthread_join(data->anim->thread, NULL);
@@ -91,7 +91,7 @@ int	key_handler_menu(int key, t_data *data)
 {
 	if (key == KEY_ESC)
 		free_exit_menu(data);
-	if (key == ENTER)
+	if (data->menu_active == 1 && key == ENTER)
 	{
 		data->menu_active = 0;
 		data->game_started = 1;

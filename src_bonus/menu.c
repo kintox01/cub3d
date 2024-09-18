@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:23:10 by hugolefevre       #+#    #+#             */
-/*   Updated: 2024/09/10 17:26:18 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/18 15:48:22 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

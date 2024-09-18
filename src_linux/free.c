@@ -6,7 +6,7 @@
 /*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/16 14:45:39 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:26:01 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	free_init_data(t_data *data)
 			mlx_destroy_image(data->mlx, data->img[i]->p_img);
 			data->img[i]->p_img = NULL;
 		}
-		printf("Texture %i %p freed\n", i, data->img[i]->p_img);
 		if (data->img[i])
 			free(data->img[i]);
 	}

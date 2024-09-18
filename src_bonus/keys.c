@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:22 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/10 14:30:55 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2024/09/18 15:57:15 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,6 @@ void	spawn_changer(int key, t_data *data)
 
 int	key_handler(int key, t_data *data)
 {
-	if (key == ENTER)
-	{ 
-        data->menu_active = 0;
-        data->game_started = 1;
-        cub(data);
-    }
 	if (key == KEY_ESC)
 		free_exit(data);
 	if (key == 14)
