@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/18 16:21:53 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:32:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	map_init(t_map *map, t_data *data)
 
 int	launch_game(t_data *data)
 {
+	mousing(data);
 	update_param(data, data->pl->rot);
 	raycaster(data);
 	pthread_mutex_lock(&data->anim->lock);
@@ -53,7 +54,6 @@ void	cub(t_data *data)
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
-	// mlx_hook(data->mlx_win, 6, 1L << 6, mousing, data);
 	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);
 	pthread_join(data->anim->thread, NULL);
@@ -62,13 +62,14 @@ void	cub(t_data *data)
 
 int	mouse_hook(int button, int x, int y, t_data *data)
 {
-	// printf("x = %d, y = %d\n", x, y);
 	if (button == 1)
 	{
 		if (x >= 350 && x <= 550 && y >= 375 && y <= 415)
 		{
 			data->menu_active = 0;
 			data->game_started = 1;
+			mlx_mouse_hide(data->mlx, data->mlx_win);
+			mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 			cub(data);
 		}
 		if (x >= 200 && x <= 250 && y >= 450 && y <= 490)
@@ -95,6 +96,8 @@ int	key_handler_menu(int key, t_data *data)
 	{
 		data->menu_active = 0;
 		data->game_started = 1;
+		mlx_mouse_hide(data->mlx, data->mlx_win);
+		mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 		cub(data);
 	}
 	return (0);
@@ -116,13 +119,12 @@ int	main(int ac, char **av)
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		free_exit(data);
-	// mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);
 	data->menu_active = 1;
 	data->game_started = 0;
-	// cub(data);
 	draw_menu(data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler_menu, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit_menu, data);

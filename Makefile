@@ -100,7 +100,7 @@ MAKE_EXT_THREAD		= @make -j -s --no-print-directory
 MAKE_EXT			= @make -j1 -s --no-print-directory
 
 ifeq ($(UNAME_S),Linux)
-	LIBS 			= -Lmlx_linux -lmlx_Linux -Lminilibx-linux -Imlx_linux -lXext -lX11 -lm -lz
+	LIBS 			= -Lmlx_linux -lmlx_Linux -Lminilibx-linux -Imlx_linux -lXext -lX11 -lm -lzs
 	MLX 			= minilibx-linux
 	SRCS 			= $(SRCS_LINUX:.c=.o)
 endif
