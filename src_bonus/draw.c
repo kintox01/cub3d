@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 21:17:52 by dguerin           #+#    #+#             */
+/*   Updated: 2024/09/25 16:55:36 by dguerin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 #include <math.h>
@@ -7,7 +18,7 @@ int	get_pixel(t_img *img, int x, int y)
 	int	*dst;
 	int	color;
 
-	dst = (void *)img->addr + (y * img->s_line + x * \
+	dst = (void *)img->p_img + (y * img->s_line + x * \
 		(img->bt / 8));
 	color = *(int *)dst;
 	return (color);
@@ -25,7 +36,8 @@ int	draw_vertline(t_data *data, int y, int color, int j)
 
 void	set_texture(t_data *p)
 {
-	if (p->dda->side == 1 || p->dda->side == 2)
+	if (p->dda->side == 1 || p->dda->side == 2 || \
+		p->dda->side == 13 || p->dda->side == 14)
 	{
 		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
@@ -34,7 +46,8 @@ void	set_texture(t_data *p)
 		if (p->dda->raydir_x > 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
-	else if (p->dda->side == 3 || p->dda->side == 4)
+	else if (p->dda->side == 3 || p->dda->side == 4 || \
+		p->dda->side == 15 || p->dda->side == 16)
 	{
 		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);

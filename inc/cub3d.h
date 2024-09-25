@@ -277,6 +277,7 @@ int		write_error(char *str);
 int		isspawn(char c);
 int		inmap(char c);
 int		ismap(char c);
+int		isdoor(char c);
 
 int		are_printable(char *str);
 int		are_space(char *str);

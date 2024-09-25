@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:22 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/18 15:57:15 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:16:17 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/cub3d.h"
 #include "key.h"

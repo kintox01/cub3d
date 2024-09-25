@@ -1,5 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycaster.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/24 21:12:37 by dguerin           #+#    #+#             */
+/*   Updated: 2024/09/25 17:05:50 by dguerin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	is_side_door(t_data *ptr)
+{
+	ptr->dda->hit = 1;
+	if (!ptr->dda->side)
+	{
+		if (ptr->dda->raydir_x < 0)
+			ptr->dda->side = 13;
+		else if (ptr->dda->raydir_x > 0)
+			ptr->dda->side = 14;
+	}
+	else if (ptr->dda->side == 1)
+	{
+		if (ptr->dda->raydir_y < 0)
+			ptr->dda->side = 15;
+		else if (ptr->dda->raydir_y > 0)
+			ptr->dda->side = 16;
+	}
+}
 
 void	is_side(t_data *ptr)
 {
@@ -20,6 +50,7 @@ void	is_side(t_data *ptr)
 	}
 }
 
+
 void	check_dist_step(t_data *ptr)
 {
 	if (ptr->dda->sidedist_x < ptr->dda->sidedist_y)
@@ -34,6 +65,8 @@ void	check_dist_step(t_data *ptr)
 		ptr->dda->map_y += ptr->dda->stepy;
 		ptr->dda->side = 1;
 	}
+	if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
+		is_side_door(ptr);
 	if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == '1')
 		is_side(ptr);
 }
@@ -53,7 +86,6 @@ void	check_dist(t_data *ptr)
 		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + \
 			(1 - ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }
-
 void	check_side(t_data *ptr)
 {
 	if (ptr->dda->raydir_x < 0)
