@@ -6,7 +6,7 @@
 /*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:17:52 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/25 16:55:36 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/09/30 16:50:33 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_pixel(t_img *img, int x, int y)
 	int	*dst;
 	int	color;
 
-	dst = (void *)img->p_img + (y * img->s_line + x * \
+	dst = (void *)img->addr + (y * img->s_line + x * \
 		(img->bt / 8));
 	color = *(int *)dst;
 	return (color);

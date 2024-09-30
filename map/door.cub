@@ -1,7 +1,7 @@
-NO ./res/d_wall.xpm
-SO ./res/4k-2.xpm
-WE ./res/lava.xpm
-EA ./res/4k.xpm
+NO ./res/wall/d_wall.xpm
+SO ./res/wall/wall01.xpm
+WE ./res/wall/WALL0.xpm
+EA ./re/wall/WALL46.xpm
 
 F 200,225,204
 C 222,243,246
