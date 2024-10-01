@@ -6,7 +6,7 @@
 /*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/10/01 15:28:18 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 21:30:28 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		{
 			data->menu_active = 0;
 			data->game_started = 1;
-			// mlx_mouse_hide(data->mlx, data->mlx_win);
+			//mlx_mouse_hide(data->mlx, data->mlx_win);
 			mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT
 				/ 2);
 			cub(data);
@@ -96,7 +96,7 @@ int	key_handler_menu(int key, t_data *data)
 	{
 		data->menu_active = 0;
 		data->game_started = 1;
-		// mlx_mouse_hide(data->mlx, data->mlx_win);
+		//mlx_mouse_hide(data->mlx, data->mlx_win);
 		mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 		cub(data);
 	}
