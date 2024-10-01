@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:24:42 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:24:44 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:29:04 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	read_file(char **str, int fd)
 {
-	long		len;
+	long	len;
 
 	len = read(fd, *str, 10240);
 	if (len == -1)
@@ -31,11 +31,11 @@ int	get_file(int fd, char ***tab)
 	s1 = malloc(10241);
 	str = 0;
 	if (read_file(&s1, fd))
-		exit (write_error("Error\nRead failed\n"));
+		exit(write_error("Error\nRead failed\n"));
 	while (s1 && *s1)
 	{
 		if (are_printable(s1))
-			exit (write_error("Error\nBad elem\n"));
+			exit(write_error("Error\nBad elem\n"));
 		str = ft_free_join(str, s1, 1);
 		if (!str || read_file(&s1, fd))
 		{

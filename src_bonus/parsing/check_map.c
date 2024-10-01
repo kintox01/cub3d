@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:25:04 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:25:05 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:46 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	check(t_map *map, size_t *map_len)
 		while (map->map[y][x])
 		{
 			if (inmap(map->map[y][x]) && !(x && ismap(map->map[y][x - 1])
-				&& map->map[y][x + 1] && ismap(map->map[y][x + 1])
-				&& y && map_len[y - 1] >= x + 1 && ismap(map->map[y - 1][x - 1])
-				&& ismap(map->map[y - 1][x]) && ismap(map->map[y - 1][x + 1])
-				&& map->map[y + 1] && map_len[y + 1] >= x
-				&& ismap(map->map[y + 1][x - 1])
-				&& ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))
+					&& map->map[y][x + 1] && ismap(map->map[y][x + 1]) && y
+					&& map_len[y - 1] >= x + 1 && ismap(map->map[y - 1][x - 1])
+					&& ismap(map->map[y - 1][x]) && ismap(map->map[y - 1][x
+						+ 1]) && map->map[y + 1] && map_len[y + 1] >= x
+					&& ismap(map->map[y + 1][x - 1]) && ismap(map->map[y
+						+ 1][x]) && ismap(map->map[y + 1][x + 1])))
 				exit(write_error0("Error\nMap isnt close\n"));
 			if (isspawn(map->map[y][x]))
 				if (add_item(map, x, y))
@@ -62,7 +62,7 @@ int	check(t_map *map, size_t *map_len)
 	return (0);
 }
 
-int	cpl_map_len(char **map, size_t	**map_len)
+int	cpl_map_len(char **map, size_t **map_len)
 {
 	size_t	x;
 	size_t	y;

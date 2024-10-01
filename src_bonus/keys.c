@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:22 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/25 17:16:17 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:16 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ void	set_dir(t_data *ptr, char flag)
 
 void	key_dir(t_data *data)
 {
-	if (data->map->map[(int)(data->pl->posx - 1.0)] \
-			[(int)(data->pl->posy)] == 'D')
-		data->map->map[(int)(data->pl->posx - 1.0 + data->pl->dirx \
-			* data->pl->dey)][(int)(data->pl->posy)] = '0';
-	else if (data->map->map[(int)(data->pl->posx + 1.0)] \
-			[(int)(data->pl->posy)] == 'D')
-		data->map->map[(int)(data->pl->posx + 1.0 + data->pl->dirx \
-			* data->pl->dey)][(int)(data->pl->posy)] = '0';
-	else if (data->map->map[(int)(data->pl->posx)] \
-			[(int)(data->pl->posy + 1.0)] == 'D')
-		data->map->map[(int)(data->pl->posx + data->pl->dirx \
+	if (data->map->map[(int)(data->pl->posx
+			- 1.0)][(int)(data->pl->posy)] == 'D')
+		data->map->map[(int)(data->pl->posx - 1.0 + data->pl->dirx
+				* data->pl->dey)][(int)(data->pl->posy)] = '0';
+	else if (data->map->map[(int)(data->pl->posx
+			+ 1.0)][(int)(data->pl->posy)] == 'D')
+		data->map->map[(int)(data->pl->posx + 1.0 + data->pl->dirx
+				* data->pl->dey)][(int)(data->pl->posy)] = '0';
+	else if (data->map->map[(int)(data->pl->posx)][(int)(data->pl->posy
+			+ 1.0)] == 'D')
+		data->map->map[(int)(data->pl->posx + data->pl->dirx
 				* data->pl->dey)][(int)(data->pl->posy + 1.0)] = '0';
-	else if (data->map->map[(int)(data->pl->posx)] \
-			[(int)(data->pl->posy - 1.0)] == 'D')
-		data->map->map[(int)(data->pl->posx + data->pl->dirx * \
-				data->pl->dey)][(int)(data->pl->posy - 1.0)] = '0';
+	else if (data->map->map[(int)(data->pl->posx)][(int)(data->pl->posy
+			- 1.0)] == 'D')
+		data->map->map[(int)(data->pl->posx + data->pl->dirx
+				* data->pl->dey)][(int)(data->pl->posy - 1.0)] = '0';
 }
 
 void	spawn_changer(int key, t_data *data)
@@ -98,7 +98,7 @@ int	key_handler(int key, t_data *data)
 {
 	if (key == KEY_ESC)
 		free_exit(data);
-	if (key == 14)
+	if (key == ENTER)
 		key_dir(data);
 	if (key == KEY_W)
 		data->pl->dey = 0.07;

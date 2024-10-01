@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:15:22 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/25 18:15:25 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:53 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ int	cpl_face(t_file *file, char *str, size_t start, int face)
 		file->f = ft_substr(str, start, end - start);
 	else if (face == 6 && ++file->f6)
 		file->c = ft_substr(str, start, end - start);
-	if ((face == 1 && !file->no) || (face == 2 && !file->so)
-		|| (face == 3 && !file->we) || (face == 4 && !file->ea)
-		|| (face == 5 && !file->f) || (face == 6 && !file->c))
+	if ((face == 1 && !file->no) || (face == 2 && !file->so) || (face == 3
+			&& !file->we) || (face == 4 && !file->ea) || (face == 5 && !file->f)
+		|| (face == 6 && !file->c))
 		return (write_error("Error\nMalloc\n"));
 	return (0);
 }
 
 int	map_face(t_file *file, char *str, size_t i)
 {
-	int		face;
+	int	face;
 
 	i = 0;
 	while (str[i] && (str[i] == 32 || str[i] == '\n'))

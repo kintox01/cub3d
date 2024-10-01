@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 17:28:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/09/11 16:18:22 by hulefevr         ###   ########.fr        #
+#    Updated: 2024/10/01 14:13:00 by dguerin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ MAKE_EXT_THREAD		= @make -j -s --no-print-directory
 MAKE_EXT			= @make -j1 -s --no-print-directory
 
 ifeq ($(UNAME_S),Linux)
-	LIBS 			= -Lmlx_linux -lmlx_Linux -Lminilibx-linux -Imlx_linux -lXext -lX11 -lm -lzs
+	LIBS 			= -Lmlx_linux -lmlx_Linux -Lminilibx-linux -Imlx_linux -lXext -lX11 -lm 
 	MLX 			= minilibx-linux
 	SRCS 			= $(SRCS_LINUX:.c=.o)
 endif

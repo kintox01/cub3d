@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:20:08 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:20:22 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:37 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int	find_mod(int num)
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	int		*dst;
+	int	*dst;
 
-	dst = (void *)img->p_img + (y * img->s_line + x * \
-		(img->bt / 8));
+	dst = (void *)img->p_img + (y * img->s_line + x * (img->bt / 8));
 	*(int *)dst = color;
 }

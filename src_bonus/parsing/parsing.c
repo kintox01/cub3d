@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:47 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/16 13:05:20 by hulefevr         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:29:01 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/cub3d.h"
 
 int	all_face(t_file *file)
 {
-	if (!file->f1 || !file->f2 || !file->f3
-		|| !file->f4 || !file->f5 || !file->f6)
+	if (!file->f1 || !file->f2 || !file->f3 || !file->f4 || !file->f5
+		|| !file->f6)
 	{
 		ft_free(file->no, file->so, file->we, file->ea);
 		ft_free(file->c, file->f, file, 0);
@@ -32,7 +31,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		exit (write_error("Error\nOpen failed\n"));
+		exit(write_error("Error\nOpen failed\n"));
 	if (get_file(fd, &tab))
 	{
 		ft_free(file->no, file->so, file->we, file->ea);
@@ -65,7 +64,7 @@ int	ext_cub(char *str)
 	while (i && str[i] != '.')
 		i--;
 	if (!i || ft_strncmp(".cub", &str[i], 4))
-		exit (write_error("Error\nBad extension\n"));
+		exit(write_error("Error\nBad extension\n"));
 	return (0);
 }
 
@@ -77,10 +76,13 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 4, file->ea);
 	ft_free(file->no, file->so, file->we, file->ea);
 	init_texture(data, 5, "./res/door/door1.xpm");
+	init_texture(data, 6, "./res/door/door1.xpm");
+	init_texture(data, 7, "./res/door/door1.xpm");
+	init_texture(data, 8, "./res/door/door1.xpm");
 	init_hud(data);
 	init_minimap(data);
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
-		exit (write_error("Error\nColor error\n"));
+		exit(write_error("Error\nColor error\n"));
 	ft_free(file->c, file->f, file, 0);
 	return (0);
 }

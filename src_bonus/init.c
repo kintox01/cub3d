@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:19:44 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:19:47 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:14 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ void	set_plane(t_data *ptr, char flag)
 
 void	init_texture(t_data *ptr, int flag, char *path)
 {
-	ptr->img[flag]->p_img = mlx_xpm_file_to_image(ptr->mlx, \
-		path, &ptr->img[flag]->width, &ptr->img[flag]->height);
+	ptr->img[flag]->p_img = mlx_xpm_file_to_image(ptr->mlx, path,
+			&ptr->img[flag]->width, &ptr->img[flag]->height);
 	if (!(ptr->img[flag]->p_img))
 		exit(write_error("Error\nMap load\n"));
 	printf("Texture[%i] %p loaded\n", flag, ptr->img[flag]->p_img);
-	ptr->img[flag]->addr = mlx_get_data_addr(ptr->img[flag]->p_img, \
-		&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
+	ptr->img[flag]->addr = mlx_get_data_addr(ptr->img[flag]->p_img,
+			&ptr->img[flag]->bt, &ptr->img[flag]->s_line,
+			&ptr->img[flag]->endian);
 	if (!(ptr->img[flag]->addr))
 		exit(write_error("Error\nMap load\n"));
 	printf("Texture[%i] part 2 %p loaded\n", flag, ptr->img[flag]->p_img);
@@ -55,17 +56,16 @@ int	init_data(t_data *data)
 	int	i;
 
 	i = 0;
-	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, \
-		WIN_HEIGHT, "cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3d");
 	data->p_img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->t = malloc(sizeof(t_time));
-	data->img = malloc(sizeof(t_img *) * 6);
-	if (!data->mlx || !data->mlx_win || !data->pl
-		|| !data->dda || !data->t || !data->img)
+	data->img = malloc(sizeof(t_img *) * 9);
+	if (!data->mlx || !data->mlx_win || !data->pl || !data->dda || !data->t
+		|| !data->img)
 		return (1);
-	while (i <= 5)
+	while (i <= 8)
 	{
 		data->img[i] = malloc(sizeof(t_img));
 		if (!data->img[i])
@@ -75,7 +75,7 @@ int	init_data(t_data *data)
 	}
 	data->sp = malloc(sizeof(t_sprite));
 	data->sp->buffer = malloc(sizeof(double) * (WIN_WIDTH + 1));
-	data->img[0]->p_img = mlx_get_data_addr(data->p_img, &data->img[0]->bt, 
+	data->img[0]->p_img = mlx_get_data_addr(data->p_img, &data->img[0]->bt,
 			&data->img[0]->s_line, &data->img[0]->endian);
 	return (0);
 }

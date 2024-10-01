@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:12:37 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/25 17:05:50 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:27 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	is_side_door(t_data *ptr)
 	if (!ptr->dda->side)
 	{
 		if (ptr->dda->raydir_x < 0)
-			ptr->dda->side = 13;
+			ptr->dda->side = 5;
 		else if (ptr->dda->raydir_x > 0)
-			ptr->dda->side = 14;
+			ptr->dda->side = 6;
 	}
 	else if (ptr->dda->side == 1)
 	{
 		if (ptr->dda->raydir_y < 0)
-			ptr->dda->side = 15;
+			ptr->dda->side = 7;
 		else if (ptr->dda->raydir_y > 0)
-			ptr->dda->side = 16;
+			ptr->dda->side = 8;
 	}
 }
 
@@ -49,7 +49,6 @@ void	is_side(t_data *ptr)
 			ptr->dda->side = 4;
 	}
 }
-
 
 void	check_dist_step(t_data *ptr)
 {
@@ -77,39 +76,39 @@ void	check_dist(t_data *ptr)
 	ptr->dda->side = 0;
 	while (ptr->dda->hit == 0)
 		check_dist_step(ptr);
-	if (ptr->dda->side == 1 || ptr->dda->side == 2 || \
-		ptr->dda->side == 13 || ptr->dda->side == 14)
-		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posx + \
-			(1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
-	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || \
-			ptr->dda->side == 15 || ptr->dda->side == 16)
-		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + \
-			(1 - ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
+	if (ptr->dda->side == 1 || ptr->dda->side == 2 || ptr->dda->side == 5
+		|| ptr->dda->side == 6)
+		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posx + (1
+					- ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
+	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || ptr->dda->side == 7
+		|| ptr->dda->side == 8)
+		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + (1
+					- ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }
 void	check_side(t_data *ptr)
 {
 	if (ptr->dda->raydir_x < 0)
 	{
 		ptr->dda->stepx = -1;
-		ptr->dda->sidedist_x = (ptr->pl->posx - \
-			ptr->dda->map_x) * ptr->dda->deltadist_x;
+		ptr->dda->sidedist_x = (ptr->pl->posx - ptr->dda->map_x)
+			* ptr->dda->deltadist_x;
 	}
 	else
 	{
 		ptr->dda->stepx = 1;
-		ptr->dda->sidedist_x = (ptr->dda->map_x + 1.0 - \
-			ptr->pl->posx) * ptr->dda->deltadist_x;
+		ptr->dda->sidedist_x = (ptr->dda->map_x + 1.0 - ptr->pl->posx)
+			* ptr->dda->deltadist_x;
 	}
 	if (ptr->dda->raydir_y < 0)
 	{
 		ptr->dda->stepy = -1;
-		ptr->dda->sidedist_y = (ptr->pl->posy - \
-			ptr->dda->map_y) * ptr->dda->deltadist_y;
+		ptr->dda->sidedist_y = (ptr->pl->posy - ptr->dda->map_y)
+			* ptr->dda->deltadist_y;
 	}
 	else
 	{
 		ptr->dda->stepy = 1;
-		ptr->dda->sidedist_y = (ptr->dda->map_y + 1.0 - \
-			ptr->pl->posy) * ptr->dda->deltadist_y;
+		ptr->dda->sidedist_y = (ptr->dda->map_y + 1.0 - ptr->pl->posy)
+			* ptr->dda->deltadist_y;
 	}
 }

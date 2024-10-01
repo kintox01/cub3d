@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:16:39 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:16:41 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:32 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ static void	creat2(const char *s, char c, int *i, int *trig)
 
 static char	**ft_to_create_tab(char **tab, const char *s, char c)
 {
-	int		count;
-	int		i;
-	int		start;
-	int		trig;
+	int	count;
+	int	i;
+	int	start;
+	int	trig;
 
 	init(&count, &i, &start, &trig);
 	while (s[i])

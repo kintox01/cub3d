@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:17:52 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/30 16:50:33 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:15:47 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	draw_vertline(t_data *data, int y, int color, int j)
 void	set_texture(t_data *p)
 {
 	if (p->dda->side == 1 || p->dda->side == 2 || \
-		p->dda->side == 13 || p->dda->side == 14)
+		p->dda->side == 5 || p->dda->side == 6)
 	{
 		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
@@ -47,7 +47,7 @@ void	set_texture(t_data *p)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
 	else if (p->dda->side == 3 || p->dda->side == 4 || \
-		p->dda->side == 15 || p->dda->side == 16)
+		p->dda->side == 7 || p->dda->side == 8)
 	{
 		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);

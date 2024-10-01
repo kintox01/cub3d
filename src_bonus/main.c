@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/24 21:17:20 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:18 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	launch_game(t_data *data)
 	pthread_mutex_lock(&data->anim->lock);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->hud, 140, 604);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, \
+	mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->weapon[data->anim->i]->p_img, 323, 498);
 	pthread_mutex_unlock(&data->anim->lock);
 	draw_minimap(data);
@@ -45,7 +45,7 @@ int	launch_game(t_data *data)
 void	cub(t_data *data)
 {
 	mlx_clear_window(data->mlx, data->mlx_win);
-    mlx_string_put(data->mlx, data->mlx_win, WIN_WIDTH / 2 - 50, WIN_HEIGHT / 2, \
+	mlx_string_put(data->mlx, data->mlx_win, WIN_WIDTH / 2 - 50, WIN_HEIGHT / 2,
 		0xFFFFFF, "Le jeu est en cours...");
 	pthread_mutex_init(&data->anim->lock, NULL);
 	pthread_create(&data->anim->thread, NULL, display_hud, data);
@@ -67,8 +67,9 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		{
 			data->menu_active = 0;
 			data->game_started = 1;
-			mlx_mouse_hide(data->mlx, data->mlx_win);
-			mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+			// mlx_mouse_hide(data->mlx, data->mlx_win);
+			mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT
+				/ 2);
 			cub(data);
 		}
 		if (x >= 200 && x <= 250 && y >= 450 && y <= 490)
@@ -95,12 +96,12 @@ int	key_handler_menu(int key, t_data *data)
 	{
 		data->menu_active = 0;
 		data->game_started = 1;
-		mlx_mouse_hide(data->mlx, data->mlx_win);
+		// mlx_mouse_hide(data->mlx, data->mlx_win);
 		mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 		cub(data);
 	}
 	return (0);
-}	
+}
 
 int	main(int ac, char **av)
 {
@@ -111,7 +112,7 @@ int	main(int ac, char **av)
 		return (write_error("Need exactly one parameter (./cub3D <map>.cub)"));
 	data = malloc(sizeof(t_data));
 	if (!data)
-		exit (write_error("Error\nMalloc failed\n"));
+		exit(write_error("Error\nMalloc failed\n"));
 	data->mlx = mlx_init();
 	if (init_data(data))
 		return (1);

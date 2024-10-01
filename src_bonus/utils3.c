@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:20:17 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:20:19 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:42 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_error(void *arg, int e)
 {
 	(void)arg;
 	if (e == 2)
-		write (2, "malloc\n", 7);
+		write(2, "malloc\n", 7);
 	else if (e == 9)
-		write (2, "map error\n", 10);
-	exit (1);
+		write(2, "map error\n", 10);
+	exit(1);
 }
 
 void	set_spawn(t_data *data)

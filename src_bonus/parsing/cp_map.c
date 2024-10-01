@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cp_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:22:57 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/25 18:25:04 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:51 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	take_map(t_file *file, t_map *map, char **tab)
 	size_t	i2;
 
 	if (!file->map_start)
-		exit (write_error("Error\nMap error\n"));
+		exit(write_error("Error\nMap error\n"));
 	ft_tab_len(file, tab);
 	map->map = malloc(sizeof(char *) * (file->tab_len + 1));
 	if (!map->map)

@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/24 21:21:03 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:27:55 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void free_minimap(t_data *data)
+void	free_minimap(t_data *data)
 {
-    int i = 0;
+	int	i;
 
-    while (i < data->minimap->map_height)
-    {
-        free(data->minimap->map[i]);
-        i++;
-	}
-    if (data->minimap->img->p_img)
+	i = 0;
+	while (i < data->minimap->map_height)
 	{
-        mlx_destroy_image(data->mlx, data->minimap->img->p_img);
+		free(data->minimap->map[i]);
+		i++;
+	}
+	if (data->minimap->img->p_img)
+	{
+		mlx_destroy_image(data->mlx, data->minimap->img->p_img);
 	}
 	if (data->anim)
 	{
@@ -39,8 +40,8 @@ void free_minimap(t_data *data)
 
 void	free_my_data(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	i = -1;
 	while (++i < 5)
 	{
@@ -61,9 +62,7 @@ void	free_my_data(t_data *data)
 	printf("Hud %p freed\n", data->hud);
 	if (data->anim)
 		free(data->anim);
-	
 	return ;
-	
 }
 
 void	free_init_data(t_data *data)
@@ -78,7 +77,7 @@ void	free_init_data(t_data *data)
 	free(data->sp);
 	if (data->img[0])
 		free(data->img[0]);
-	while (++i < 6)
+	while (++i < 9)
 	{
 		if (data->img[i] != NULL && data->img[i]->p_img != NULL)
 		{
@@ -96,7 +95,6 @@ void	free_init_data(t_data *data)
 	free(data);
 	return ;
 }
-
 
 int	free_exit(t_data *data)
 {

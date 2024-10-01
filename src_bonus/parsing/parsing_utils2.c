@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:24:37 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/24 21:24:40 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:30:38 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,12 @@ int	write_error(char *str)
 }
 
 int	write_error0(char *str)
-{	
+{
 	printf("%s", str);
 	return (0);
 }
 
-int	are_printable(char *str)
-{
-	size_t	i;
 
-	i = -1;
-	while (str[++i])
-	{
-		if (!ft_isspace(str[i]) && (str[i] < 32 || str[i] > 126))
-		{
-			return (1);
-		}
-	}
-	return (0);
-}
 
 int	are_space(char *str)
 {

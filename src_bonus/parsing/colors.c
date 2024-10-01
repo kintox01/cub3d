@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+        */
+/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:52:52 by dguerin           #+#    #+#             */
-/*   Updated: 2024/09/30 16:52:54 by dguerin          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:28:49 by dguerin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	conv_color(int *color, char *str)
 		return (1);
 	tab = color_split(str);
 	if (tab == 0)
-		exit (write_error("Error\nmalloc_failed\n"));
+		exit(write_error("Error\nmalloc_failed\n"));
 	i = -1;
 	while (tab[++i])
 		rgb[i] = ft_atoi_positive(tab[i]);
