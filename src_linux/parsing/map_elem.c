@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   map_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:35:14 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 17:35:15 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:14:41 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/cub3d.h"
 

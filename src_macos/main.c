@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hugolefevre <hugolefevre@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 13:36:47 by hugolefevre      ###   ########.fr       */
+/*   Updated: 2025/01/18 12:48:41 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	cub(t_data *data)
 
 int	mouse_hook(int button, int x, int y, t_data *data)
 {
-	// printf("x = %d, y = %d\n", x, y);
 	if (button == 1)
 	{
 		if (x >= 350 && x <= 550 && y >= 375 && y <= 415)
@@ -94,18 +93,15 @@ int	main(int ac, char **av)
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		free_exit(data);
-	// mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);
 	data->menu_active = 1;
 	data->game_started = 0;
-	// cub(data);
 	draw_menu(data);
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
 	mlx_hook(data->mlx_win, 17, 0, free_exit, data);
 	mlx_mouse_hook(data->mlx_win, mouse_hook, data);
 	mlx_loop(data->mlx);
-	return (0);
 }

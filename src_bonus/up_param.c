@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   up_param.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:16:47 by dguerin           #+#    #+#             */
-/*   Updated: 2024/10/01 15:29:49 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:39:50 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	mousing(t_data *data)
 	mlx_mouse_get_pos(data->mlx, data->mlx_win, &x, &y);
 	dx = x - WIN_WIDTH / 2;
 	if (dx > 0)
-		update_param(data, dx * (-(2 * M_PI / 11520)));
+		update_param(data, dx * (-(2 * M_PI * 0.003)));
 	else if (dx < 0)
-		update_param(data, -dx * 2 * M_PI / 11520);
+		update_param(data, -dx * 2 * M_PI * 0.003);
 	mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	return (0);
 }
@@ -45,13 +45,13 @@ void	update_param(t_data *data, double rot)
 		data->pl->posx += data->pl->dirx * data->pl->dey;
 	if (!ft_strchr("1D",
 			data->map->map[(int)(data->pl->posx)][(int)(data->pl->posy
-				+ data->pl->diry * data->pl->dey)]))
+		+ data->pl->diry * data->pl->dey)]))
 		data->pl->posy += data->pl->diry * data->pl->dey;
 	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posx + data->pl->plx
 				* data->pl->dex)][(int)data->pl->posy]))
 		data->pl->posx += data->pl->plx * data->pl->dex;
 	if (!ft_strchr("1D",
 			data->map->map[(int)data->pl->posx][(int)(data->pl->posy
-				+ data->pl->ply * data->pl->dex)]))
+			+ data->pl->ply * data->pl->dex)]))
 		data->pl->posy += data->pl->ply * data->pl->dex;
 }

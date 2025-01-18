@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 12:21:28 by hulefevr          #+#    #+#             */
+/*   Updated: 2025/01/18 12:23:56 by hulefevr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
@@ -35,11 +46,24 @@ void	init_texture(t_data *ptr, int flag, char *path)
 		&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
 }
 
-int	init_data(t_data *data)
+int	init_data2(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	while (i <= 5)
+	{
+		data->img[i] = malloc(sizeof(t_img));
+		if (!data->img[i])
+			return (write_error("Error\nMap load\n"));
+		data->img[i]->p_img = NULL;
+		i++;
+	}
+	return (0);
+}
+
+int	init_data(t_data *data)
+{
 	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, \
 		WIN_HEIGHT, "cub3d");
 	data->p_img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
@@ -50,14 +74,8 @@ int	init_data(t_data *data)
 	if (!data->mlx || !data->mlx_win || !data->pl
 		|| !data->dda || !data->t || !data->img)
 		return (1);
-	while (i <= 5)
-	{
-		data->img[i] = malloc(sizeof(t_img));
-		if (!data->img[i])
-			return (write_error("Error\nMap load\n"));
-		data->img[i]->p_img = NULL;
-		i++;
-	}
+	if (init_data2(data))
+		return (1);
 	data->sp = malloc(sizeof(t_sprite));
 	data->sp->buffer = malloc(sizeof(double) * (WIN_WIDTH + 1));
 	data->img[0]->p_img = mlx_get_data_addr(data->p_img, &data->img[0]->bt, \

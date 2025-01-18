@@ -3,60 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:22 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/10/01 21:09:39 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:54:19 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 #include "key.h"
-
-int	key_exit(int key, t_data *data)
-{
-	if (key == KEY_LEFT)
-		data->pl->rot = 0;
-	if (key == KEY_RIGHT)
-		data->pl->rot = 0;
-	if (key == KEY_LEFT)
-		data->pl->rot = 0;
-	if (key == KEY_RIGHT)
-		data->pl->rot = 0;
-	if (key == KEY_W)
-		data->pl->dey = 0;
-	if (key == KEY_S)
-		data->pl->dey = 0;
-	if (key == KEY_D)
-		data->pl->dex = 0;
-	if (key == KEY_A)
-		data->pl->dex = 0;
-	return (0);
-}
-
-void	set_dir(t_data *ptr, char flag)
-{
-	if (flag == 'W')
-	{
-		ptr->pl->dirx = 1;
-		ptr->pl->diry = -1;
-	}
-	else if (flag == 'E')
-	{
-		ptr->pl->dirx = 1;
-		ptr->pl->diry = 1;
-	}
-	else if (flag == 'N')
-	{
-		ptr->pl->diry = 1;
-		ptr->pl->dirx = -1;
-	}
-	else if (flag == 'S')
-	{
-		ptr->pl->diry = 1;
-		ptr->pl->dirx = 1;
-	}
-}
 
 void	key_dir(t_data *data)
 {
@@ -121,7 +76,7 @@ int	key_handler(int key, t_data *data)
 	if (key == ENTER)
 		key_dir(data);
 	if (key == LETTER_KEY_ACTION)
-		key_dir2(data);	
+		key_dir2(data);
 	if (key == KEY_W)
 		data->pl->dey = 0.07;
 	if (key == KEY_S)

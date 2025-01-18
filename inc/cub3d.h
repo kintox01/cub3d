@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/18 12:56:15 by hulefevr          #+#    #+#             */
+/*   Updated: 2025/01/18 12:56:30 by hulefevr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -21,7 +32,6 @@
 # else
 #  error "OS not supported"
 # endif
-
 
 # define WIN_WIDTH 900
 # define WIN_HEIGHT 680
@@ -186,7 +196,6 @@ typedef struct s_animation
 	int				status;
 }	t_animation;
 
-
 typedef struct l_minimap
 {
 	int			x;
@@ -302,5 +311,8 @@ void	draw_minimap_2(t_data *data);
 void	draw_minimap(t_data *data);
 int		write_error0(char *str);
 int		mousing(t_data *data);
+int		launch_game(t_data *data);
+void	map_init(t_map *map, t_data *data);
+void	set_dir(t_data *ptr, char flag);
 
 #endif // !CUB3D_H

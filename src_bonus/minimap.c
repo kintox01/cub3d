@@ -3,45 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:19:59 by hugolefevre       #+#    #+#             */
-/*   Updated: 2024/10/01 15:28:23 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:45:25 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void	my_mlx_pixel_put2(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x >= 0 && x < MINIMAP_SIZE && y >= 0 && y < MINIMAP_SIZE)
-	{
-		dst = img->addr + (y * img->s_line + x * (img->bt / 8));
-		*(unsigned int *)dst = color;
-	}
-}
-
-void	draw_rect(t_data *data, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < TILE_SIZE)
-	{
-		j = 0;
-		while (j < TILE_SIZE)
-		{
-			my_mlx_pixel_put2(data->minimap->img, x + i, y + j, color);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	init_minimap(t_data *data)
+void	init_minimap2(t_data *data)
 {
 	int	i;
 
@@ -60,6 +31,12 @@ void	init_minimap(t_data *data)
 		data->minimap->map[i] = ft_strdup(data->map->map[i]);
 		i++;
 	}
+	return ;
+}
+
+void	init_minimap(t_data *data)
+{
+	init_minimap2(data);
 	data->minimap->offset_x = WIN_WIDTH - MINIMAP_SIZE - OFFSET_X;
 	data->minimap->offset_y = OFFSET_Y;
 	data->minimap->img = malloc(sizeof(t_img));
@@ -90,18 +67,8 @@ void	draw_minimap_2(t_data *data)
 	return ;
 }
 
-void	draw_minimap(t_data *data)
+void	do_while(t_data *data)
 {
-	int	player_screen_x;
-	int	player_screen_y;
-
-	data->minimap->start_x = (int)(data->pl->posy - (MINIMAP_SIZE / (2.0
-					* TILE_SIZE)));
-	data->minimap->start_y = (int)(data->pl->posx - (MINIMAP_SIZE / (2.0
-					* TILE_SIZE)));
-	data->minimap->end_x = data->minimap->start_x + MINIMAP_SIZE / TILE_SIZE;
-	data->minimap->end_y = data->minimap->start_y + MINIMAP_SIZE / TILE_SIZE;
-	data->minimap->y = data->minimap->start_y;
 	while (data->minimap->y < data->minimap->end_y)
 	{
 		data->minimap->x = data->minimap->start_x;
@@ -116,6 +83,22 @@ void	draw_minimap(t_data *data)
 		}
 		data->minimap->y++;
 	}
+	return ;
+}
+
+void	draw_minimap(t_data *data)
+{
+	int	player_screen_x;
+	int	player_screen_y;
+
+	data->minimap->start_x = (int)(data->pl->posy - (MINIMAP_SIZE / (2.0
+					* TILE_SIZE)));
+	data->minimap->start_y = (int)(data->pl->posx - (MINIMAP_SIZE / (2.0
+					* TILE_SIZE)));
+	data->minimap->end_x = data->minimap->start_x + MINIMAP_SIZE / TILE_SIZE;
+	data->minimap->end_y = data->minimap->start_y + MINIMAP_SIZE / TILE_SIZE;
+	data->minimap->y = data->minimap->start_y;
+	do_while(data);
 	player_screen_x = MINIMAP_SIZE / 2 - TILE_SIZE / 2;
 	player_screen_y = MINIMAP_SIZE / 2 - TILE_SIZE / 2;
 	draw_rect(data, player_screen_x, player_screen_y, 0xFF0000);

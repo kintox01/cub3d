@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:35:09 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 17:38:42 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:15:48 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/cub3d.h"
 
@@ -20,7 +19,7 @@ int	write_error(char *str)
 }
 
 int	write_error0(char *str)
-{	
+{
 	printf("%s", str);
 	return (0);
 }
@@ -62,14 +61,4 @@ int	ft_free(void *a1, void *a2, void *a3, void *a4)
 	if (a4)
 		free(a4);
 	return (1);
-}
-
-void	ft_tab_len(t_file *file, char **tab)
-{
-	size_t	i;
-
-	i = file->map_start;
-	while (tab[i])
-		i++;
-	file->tab_len = i - file->map_start;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:52:40 by dguerin           #+#    #+#             */
-/*   Updated: 2024/10/01 15:31:06 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:37:30 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ int	isspawn(char c)
 		return (1);
 	return (0);
 }
+
 int	isdoor(char c)
 {
 	if (c == 'D')
 		return (1);
 	return (0);
 }
+
 int	inmap(char c)
 {
 	if (c == '0' || isspawn(c) || isdoor(c))
@@ -39,6 +41,7 @@ int	ismap(char c)
 		return (1);
 	return (0);
 }
+
 int	are_printable(char *str)
 {
 	size_t	i;

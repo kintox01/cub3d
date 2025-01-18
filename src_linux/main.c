@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/11 16:07:33 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:20:18 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/cub3d.h"
 #include "key.h"
@@ -37,8 +36,6 @@ int	launch_game(t_data *data)
 
 void	cub(t_data *data)
 {
-
-	// mlx_mouse_hide();
 	mlx_do_key_autorepeaton(data->mlx);
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_handler, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_exit, data);
@@ -63,7 +60,6 @@ int	main(int ac, char **av)
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		free_exit(data);
-	// mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:12:37 by dguerin           #+#    #+#             */
-/*   Updated: 2024/10/01 15:28:27 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:40:10 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	check_dist(t_data *ptr)
 		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + (1
 					- ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }
+
 void	check_side(t_data *ptr)
 {
 	if (ptr->dda->raydir_x < 0)

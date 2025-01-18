@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 21:24:37 by dguerin           #+#    #+#             */
-/*   Updated: 2024/10/01 15:30:38 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:37:35 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	write_error0(char *str)
 	printf("%s", str);
 	return (0);
 }
-
-
 
 int	are_space(char *str)
 {

@@ -3,44 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:01:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/10/01 21:30:28 by dguerin          ###   ########.fr       */
+/*   Updated: 2025/01/18 12:50:23 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 #include "key.h"
-
-void	map_init(t_map *map, t_data *data)
-{
-	map->spawn = 0;
-	map->item = 0;
-	data->t->start = clock();
-	data->t->n_frame = 6;
-	data->map = map;
-	data->t->tmp = 1;
-	data->pl->totalrots = 0;
-	data->n_taken = 0;
-	data->minimap = malloc(sizeof(t_minimap));
-}
-
-int	launch_game(t_data *data)
-{
-	mousing(data);
-	update_param(data, data->pl->rot);
-	raycaster(data);
-	pthread_mutex_lock(&data->anim->lock);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->hud, 140, 604);
-	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		data->weapon[data->anim->i]->p_img, 323, 498);
-	pthread_mutex_unlock(&data->anim->lock);
-	draw_minimap(data);
-	mlx_do_sync(data->mlx);
-	return (0);
-}
 
 void	cub(t_data *data)
 {
@@ -67,7 +38,6 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		{
 			data->menu_active = 0;
 			data->game_started = 1;
-			//mlx_mouse_hide(data->mlx, data->mlx_win);
 			mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT
 				/ 2);
 			cub(data);
@@ -96,7 +66,6 @@ int	key_handler_menu(int key, t_data *data)
 	{
 		data->menu_active = 0;
 		data->game_started = 1;
-		//mlx_mouse_hide(data->mlx, data->mlx_win);
 		mlx_mouse_move(data->mlx, data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 		cub(data);
 	}
@@ -130,5 +99,4 @@ int	main(int ac, char **av)
 	mlx_hook(data->mlx_win, 17, 0, free_exit_menu, data);
 	mlx_mouse_hook(data->mlx_win, mouse_hook, data);
 	mlx_loop(data->mlx);
-	return (0);
 }

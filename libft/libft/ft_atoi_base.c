@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:09:07 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/08/27 12:22:52 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:59:36 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	str_is_valid(char c, int base)
 {
-	char	*base1[17] = "0123456789ABCDEF";
-	char	*base2[17] = "0123456789abcdef";
+	char	**base1;
+	char	**base2;
 
+	base1 = "0123456789ABCDEF";
+	base2 = "0123456789abcdef";
 	while (base--)
 	{
 		if (base[base1] == c || base[base2] == c)

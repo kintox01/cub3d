@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:13:47 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/16 14:34:42 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:14:46 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../inc/cub3d.h"
 

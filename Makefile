@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dguerin <dguerin@student.42.fr>            +#+  +:+       +#+         #
+#    By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 17:28:21 by hulefevr          #+#    #+#              #
-#    Updated: 2024/10/01 14:13:00 by dguerin          ###   ########.fr        #
+#    Updated: 2025/01/18 12:55:37 by hulefevr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,8 @@ SRCS_BONUS = 	src_bonus/dlst.c\
 		src_bonus/hud.c \
 		src_bonus/minimap.c \
 		src_bonus/menu.c \
+		src_bonus/minimap_utils.c \
+		src_bonus/main_utils.c \
 
 UNAME_S := $(shell uname -s)
 
@@ -152,7 +154,7 @@ $(NAME) : ${SRCS}
 all : $(NAME) pepechad
 
 
-bonus : ${OBJ_BONUS}
+bonus : ${OBJ_BONUS} pepe
 
 	@printf $(magenta)
 	@printf "\nStart build ⏳\n"
@@ -305,8 +307,8 @@ clean :
 
 re : fclean all
 
-.PHONY : all clean fclean re
-#	COLOR SETTING	#############################################################
+
+ #	COLOR SETTING	#############################################################
 black 				=	"[1;30m"
 red 				=	"[1;31m"
 green 				=	"[1;32m"

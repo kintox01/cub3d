@@ -3,28 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulefevr <hulefevr@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: hulefevr <hulefevr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:14:26 by hulefevr          #+#    #+#             */
-/*   Updated: 2024/09/18 16:26:01 by hulefevr         ###   ########.fr       */
+/*   Updated: 2025/01/18 12:25:41 by hulefevr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../inc/cub3d.h"
 
-void	free_init_data(t_data *data)
+void	free_dat_img(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	free(data->pl);
-	free(data->dda);
-	free(data->t);
-	free(data->sp->buffer);
-	free(data->sp);
-	if (data->img[0])
-		free(data->img[0]);
 	while (++i < 6)
 	{
 		if (data->img[i] != NULL && data->img[i]->p_img != NULL)
@@ -35,6 +27,18 @@ void	free_init_data(t_data *data)
 		if (data->img[i])
 			free(data->img[i]);
 	}
+}
+
+void	free_init_data(t_data *data)
+{
+	free(data->pl);
+	free(data->dda);
+	free(data->t);
+	free(data->sp->buffer);
+	free(data->sp);
+	if (data->img[0])
+		free(data->img[0]);
+	free_dat_img(data);
 	if (data->p_img)
 		mlx_destroy_image(data->mlx, data->p_img);
 	mlx_destroy_window(data->mlx, data->mlx_win);
@@ -43,7 +47,6 @@ void	free_init_data(t_data *data)
 	free(data);
 	return ;
 }
-
 
 int	free_exit(t_data *data)
 {
